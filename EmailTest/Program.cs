@@ -11,7 +11,7 @@ namespace EmailTest
     {
         public static int Main(string[] args)
         {
-            while (1 == 1)
+            while (1==1)
             {
                 string path = String.Empty;
                 List<string> testList = new List<string>();
@@ -48,6 +48,11 @@ namespace EmailTest
                     setConfig(path);
                 }
 
+                if (ConfigurationHelper.Get<int>("RunAll") == 1)
+                {
+                    return new AutoRun().Execute(new string[] { });
+                }
+
                 if (ConfigurationHelper.Get<int>("RunEmailSend") == 1)
                 {
                     testList.Add("--test=EmailTest.EmailTest.TestEmailSending");
@@ -56,11 +61,6 @@ namespace EmailTest
                 if (ConfigurationHelper.Get<int>("RunEmailRecieve") == 1)
                 {
                     testList.Add("--test=EmailTest.EmailTest.TestEmailReceiving");
-                }
-
-                if (ConfigurationHelper.Get<int>("RunAll") == 1)
-                {
-                    return new AutoRun().Execute(args);
                 }
 
                 if (testList.Count > 0)

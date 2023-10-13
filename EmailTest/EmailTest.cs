@@ -45,6 +45,9 @@ namespace EmailTest
         }
 
         [Test]
+        public void RunBrowserTest() { }
+
+        [Test]
         public void TestEmailSending()
         {
             // Arrange
@@ -58,9 +61,6 @@ namespace EmailTest
             // Assert
              new LoginPage(_driver).LoginButton.Displayed.Should().BeTrue();
         }
-
-        [Test]
-        public void RunBrowserTest(){}
 
         [Test]
         public void TestEmailReceiving()
